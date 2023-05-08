@@ -14,6 +14,7 @@ class QuestionVC: UITableViewController {
     
     @IBOutlet weak var QuestionTableView: UITableView!
     var questions: [Question] = []
+    var indexPathRow = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +39,12 @@ class QuestionVC: UITableViewController {
             }
         }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questions.count
+        return questions.count+1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as! QuestionTableViewCell
-        let question = questions[indexPath.row]
+        let question = questions[indexPathRow]
         cell.configure(with: question)
         return cell
     }
